@@ -1,7 +1,15 @@
 import React from "react";
 import Busca from "./components/Busca";
+import { createCliente } from "pexels";
+import env from "react-dotenv";
 
 class App extends React.Component {
+  pexelsClient = null;
+
+  componentDidMount() {
+    this.pexelsClient = createCliente(env.PEXELS_KEY);
+  }
+
   onBuscaRealizada = (termoDeBusca) => {
     console.log(termoDeBusca);
   };
