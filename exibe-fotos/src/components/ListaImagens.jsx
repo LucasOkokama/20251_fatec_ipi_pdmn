@@ -1,9 +1,14 @@
-import Image from "./Image";
+import Image from './Image';
 
-const ListaImagens = ({ photos }) => {
+const ListaImagens = ({ photos, imgStyle }) => {
   return photos.map((photo, index) => (
     <div key={photo.id}>
-      <Image key={index} src={photo.src.small} alt={photo.alt} />
+      <Image
+        imgStyle={imgStyle}
+        key={index}
+        src={photo.src.small}
+        alt={photo.alt}
+      />
     </div>
   ));
 };

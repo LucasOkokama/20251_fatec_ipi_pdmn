@@ -1,6 +1,6 @@
-const Image = ({ src, alt }) => {
+const Image = ({ src, alt, imgStyle }) => {
   return (
-    <div>
+    <div className={`${imgStyle} flex justify-content-center`}>
       <img src={src} alt={alt} />
     </div>
   );
