@@ -1,4 +1,5 @@
 import Accodion from './components/Accordion';
+import Busca from './components/Busca';
 
 const itens = [
   {
@@ -84,11 +85,8 @@ const itens = [
 ];
 
 const App = () => {
-  return (
-    <div>
-      <Accodion itens={itens} />
-    </div>
-  );
+  const expressaoJFX = <Busca />;
+  return <div>{expressaoJFX}</div>;
 };
 
 export default App;
