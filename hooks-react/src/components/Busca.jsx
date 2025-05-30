@@ -2,6 +2,7 @@ import React, { act, useEffect, useState } from 'react';
 import { IconField } from 'primereact/iconfield';
 import { InputIcon } from 'primereact/inputicon';
 import { InputText } from 'primereact/inputtext';
+import { Button } from 'primereact/button';
 import axios from 'axios';
 
 const Busca = () => {
@@ -23,7 +24,11 @@ const Busca = () => {
       setResultados(data.query.search);
     };
 
-    if (termoDeBusca) fazerBusca();
+    const debounce = setTimeout(() => {
+      if (termoDeBusca) fazerBusca();
+    }, 1000);
+
+    return () => clearTimeout(debounce);
   }, [termoDeBusca]);
 
   return (
@@ -38,9 +43,20 @@ const Busca = () => {
       </IconField>
 
       {resultados.map(resultado => (
-        <div key={resultado.pageId} className="my-2 border border-1 border-400">
+        <div key={resultado.pageid} className="my-2 border border-1 border-400">
           <div className="border-bottom border border-1 border-400 p-2 text-center font-bold">
             {resultado.title}
+            <span>
+              <Button
+                icon="pi pi-send"
+                className="ml-3 p-button-rounded p-button-secondary"
+                onClick={() => {
+                  window.open(
+                    `https://en.wikipedia.org?curid=${resultado.pageid}`
+                  );
+                }}
+              />
+            </span>
           </div>
           <div className="p-2">
             <span
